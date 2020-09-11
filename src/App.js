@@ -27,13 +27,13 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <NavLink exact={true} to="/suggestions/" className="navbar-brand">
+        <NavLink exact={true} to="/recipe-suggestions/" className="navbar-brand">
             {/* <img src={require("/components/foodlogo.svg")} width="30" height="30" class="d-inline-block align-top" alt="" /> */}
              Recipe Suggestions</NavLink>
         <div className="navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
-          <NavLink to="/suggestions/" className="nav-link">Suggestions</NavLink>
+          <NavLink to="/recipe-suggestions/" className="nav-link">Suggestions</NavLink>
           </li>
           <li className="navbar-item">
           <NavLink to="/foods/add/" className="nav-link">Fridge</NavLink>
@@ -70,7 +70,7 @@ class Navbar extends Component {
         <Route path = "/foods/add/" component={FoodOnHand} />
         <Route path = "/ingredients/edit/:id" component={EditIngredient} />
         <Route path = "/foods/edit/:id" component={EditFood} />
-        <Route path = "/suggestions/" component={Suggestions} />
+        <Route path = "/recipe-suggestions/" component={Suggestions} />
         <Route path = "/about/" component={About} />
       </div>
 

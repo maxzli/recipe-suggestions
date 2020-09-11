@@ -1,7 +1,7 @@
 {
   "name": "recipe-suggestions",
   "version": "0.1.0",
-  "homepage": "http://{maxzli}.github.io/{recipe-suggestions}",
+  "homepage": "https://maxzli.github.io/recipe-suggestions/",
   "private": true,
   "dependencies": {
     "-": "0.0.1",
