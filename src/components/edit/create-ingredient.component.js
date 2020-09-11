@@ -7,7 +7,7 @@ const Row = props => (
         <td>{props.ingredient.name}</td>
         <td>{props.ingredient.expiration}</td>
         <td>
-        <Link to={"/ingredients/edit/"+props.ingredient._id}>edit</Link> |  <a href="#top" onClick={() => { props.deleteIngredient(props.ingredient._id) }}>delete</a>
+        <Link to={"/recipe-suggestions/ingredients/edit/"+props.ingredient._id}>edit</Link> |  <a href="#top" onClick={() => { props.deleteIngredient(props.ingredient._id) }}>delete</a>
         </td>
     </tr>
 )

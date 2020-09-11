@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Row = props => (
     <tr>
@@ -179,7 +180,7 @@ export default class CreateRecipe extends Component {
                         </div>
                         <div className="col">
                         <Button onClick={this.addIng} variant="outline-primary">Add Ingredient</Button>{' '}
-                        <Button href = "/ingredients/add" variant="outline-secondary">Modify Ingredients List</Button>{' '}
+                        <Button href = "/recipe-suggestions/ingredients/add/" variant="outline-secondary">Modify Ingredients List</Button>{' '}
                         <Button onClick={this.remIng} variant="outline-danger">Remove Last Ingredient</Button>{' '}
                         </div>
                     </div>

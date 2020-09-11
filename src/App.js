@@ -33,16 +33,16 @@ class Navbar extends Component {
         <div className="navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
-          <NavLink to="/recipe-suggestions/" className="nav-link">Suggestions</NavLink>
+          <NavLink exact={true} to="/recipe-suggestions/" className="nav-link">Suggestions</NavLink>
           </li>
           <li className="navbar-item">
-          <NavLink to="/foods/add/" className="nav-link">Fridge</NavLink>
+          <NavLink to="/recipe-suggestions/foods/add/" className="nav-link">Fridge</NavLink>
           </li>
           <li className="navbar-item">
-          <NavLink to="/recipes/add/" className="nav-link">Recipes</NavLink>
+          <NavLink to="/recipe-suggestions/recipes/add/" className="nav-link">Recipes</NavLink>
           </li>
           <li className="navbar-item">
-          <NavLink to="/about/" className="nav-link">About</NavLink>
+          <NavLink to="/recipe-suggestions/about/" className="nav-link">About</NavLink>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -65,13 +65,13 @@ class Navbar extends Component {
       <div className="container">
         <Navbar/>
         <br/>
-        <Route path = "/ingredients/add/" component={CreateIngredient} />
-        <Route path = "/recipes/add/" component={CreateRecipe} />
-        <Route path = "/foods/add/" component={FoodOnHand} />
-        <Route path = "/ingredients/edit/:id" component={EditIngredient} />
-        <Route path = "/foods/edit/:id" component={EditFood} />
-        <Route path = "/recipe-suggestions/" component={Suggestions} />
-        <Route path = "/about/" component={About} />
+        <Route path = "/recipe-suggestions/ingredients/add/" component={CreateIngredient} />
+        <Route path = "/recipe-suggestions/recipes/add/" component={CreateRecipe} />
+        <Route path = "/recipe-suggestions/foods/add/" component={FoodOnHand} />
+        <Route path = "/recipe-suggestions/ingredients/edit/:id" component={EditIngredient} />
+        <Route path = "/recipe-suggestions/foods/edit/:id" component={EditFood} />
+        <Route exact={true} path = "/recipe-suggestions/" component={Suggestions} />
+        <Route path = "/recipe-suggestions/about/" component={About} />
       </div>
 
     </Router>
