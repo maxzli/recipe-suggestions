@@ -7,6 +7,8 @@ import { lightTheme, darkTheme } from "./components/Themes"
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Button} from 'react-bootstrap';
+import logo from './foodlogo.svg'; // with import
+
 
 
 import Suggestions from "./components/suggestions.component"
@@ -28,7 +30,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
         <NavLink exact={true} to="/recipe-suggestions/" className="navbar-brand">
-            {/* <img src={require("/components/foodlogo.svg")} width="30" height="30" class="d-inline-block align-top" alt="" /> */}
+            <img src={logo} width="30" height="30" class="d-inline-block align-top" alt="" />{' '}
              Recipe Suggestions</NavLink>
         <div className="navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -45,7 +47,7 @@ class Navbar extends Component {
           <NavLink to="/recipe-suggestions/about/" className="nav-link">About</NavLink>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul className="navbar-nav ml-auto">
           <li className="navbar-item">
           <Button onClick={themeToggler} variant="secondary">Dark Mode Toggle</Button>
           </li>

@@ -27,6 +27,7 @@ export default class FoodOnHand extends Component {
         this.onChangeQuantity = this.onChangeQuantity.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.updateIngredientsList = this.updateIngredientsList.bind(this);
 
         this.deleteFood = this.deleteFood.bind(this);
 
@@ -43,6 +44,19 @@ export default class FoodOnHand extends Component {
     }
 
     componentDidMount(){
+        axios.get('http://localhost:5000/foods/')
+            .then(response => {
+                response.data.sort((a,b) =>
+                    (a.expirationdate > b.expirationdate) ? 1: -1)
+                this.setState({ currentfoods: response.data })
+            })
+            .catch((error) =>{
+                console.log(error);
+        })
+        this.updateIngredientsList()
+    }
+
+    updateIngredientsList(){
         axios.get('http://localhost:5000/ingredients/')
             .then(response => {
                 if (response.data.length > 0){
@@ -52,21 +66,13 @@ export default class FoodOnHand extends Component {
                     names.forEach((key, i) => result[key] = expirations[i]);
                     names.sort((a,b) =>
                         (a > b) ? 1: -1)
+                    var temp = names.filter(item => !this.state.currentfoods.map(item => item.name).includes(item))
                     this.setState({
-                        foods: names,
+                        foods: temp,
                         name: names[0],
                         expirations: result
                     })
                 }
-            })
-        axios.get('http://localhost:5000/foods/')
-            .then(response => {
-                response.data.sort((a,b) =>
-                    (a.expirationdate > b.expirationdate) ? 1: -1)
-                this.setState({ currentfoods: response.data })
-            })
-            .catch((error) =>{
-                console.log(error);
             })
     }
 
@@ -76,6 +82,7 @@ export default class FoodOnHand extends Component {
         this.setState({
             currentfoods: this.state.currentfoods.filter(el => el._id !== id)
         })
+        this.updateIngredientsList()
     }
 
     foodList() {
@@ -119,7 +126,7 @@ export default class FoodOnHand extends Component {
         console.log(food);
 
         axios.post('http://localhost:5000/foods/add/', food)
-        .then(res => console.log(res.data));
+            .then(res => console.log(res.data));
 
         this.setState({
             name: '',
@@ -127,8 +134,18 @@ export default class FoodOnHand extends Component {
             quantity: 0
         })
 
-        window.location.reload();
-    }
+        axios.get('http://localhost:5000/foods/')
+            .then(response => {
+                response.data.sort((a,b) =>
+                    (a.expirationdate > b.expirationdate) ? 1: -1)
+                this.setState({currentfoods: response.data})
+            })
+            .catch((error) =>{
+                console.log(error);
+            })
+
+            this.props.history.push('/recipe-suggestions/')  
+        }
 
 
     render() {
@@ -158,7 +175,9 @@ export default class FoodOnHand extends Component {
                         </select>    
                         </div>
                         <div className="col-sm">
-                            <Button href = "/recipe-suggestions/ingredients/add/" variant="outline-secondary">Modify Ingredients List</Button>{' '}
+                            <Link to="/recipe-suggestions/ingredients/add/">
+                                <Button variant="outline-secondary">Modify Ingredients List</Button>
+                            </Link>{' '}
                         </div>
                         </div>
                     </div>
@@ -197,7 +216,7 @@ export default class FoodOnHand extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    { this.foodList() }
+                    {this.foodList()}
                 </tbody>
                 </table>
                 </div>

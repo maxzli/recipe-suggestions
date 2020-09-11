@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Button} from 'react-bootstrap';
 
 
 export default class About extends Component {
@@ -7,7 +6,7 @@ export default class About extends Component {
     return (
       <div>
         <h3>About</h3>
-        <p>You are on the About component!</p>
+        <p>A small MERN project.</p>
       </div>
     )
   }

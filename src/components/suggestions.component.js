@@ -223,7 +223,10 @@ export default class Suggestions extends Component {
                     { this.foodList() }
                 </tbody>
                 </table>
-                <Button href = "/recipe-suggestions/foods/add" variant="outline-primary">Add to Fridge</Button>{' '}
+                <Link to="/recipe-suggestions/foods/add">
+                    <Button variant="outline-primary">Add to Fridge</Button>
+                </Link>
+                {' '}
                 </div>
         )
         }

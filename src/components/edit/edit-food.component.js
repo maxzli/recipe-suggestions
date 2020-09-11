@@ -3,6 +3,8 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import {Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 
 export default class FoodOnHand extends Component {
@@ -91,7 +93,7 @@ export default class FoodOnHand extends Component {
         axios.post('http://localhost:5000/foods/update/'+this.props.match.params.id, food)
         .then(res => console.log(res.data));
 
-        window.location = '/recipe-suggestions/';
+        this.props.history.push('/recipe-suggestions/')  
     }
 
 
@@ -139,7 +141,8 @@ export default class FoodOnHand extends Component {
                 </div>
                 <div className="form-group">
                 <input type="submit" value="Edit Food" className="btn btn-primary" />{' '}
-                <Button href = "/recipe-suggestions/foods/add" variant="outline-danger">Go Back</Button>{' '}
+                <Link to="/recipe-suggestions/foods/add/">
+                <Button variant="outline-danger">Go Back</Button></Link>{' '}
                 </div>
             </form>
             </div>

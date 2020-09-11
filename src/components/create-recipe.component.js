@@ -27,6 +27,8 @@ export default class CreateRecipe extends Component {
 
         this.deleteRecipe = this.deleteRecipe.bind(this);
 
+        this.tableRef = React.createRef();
+
         this.state = {
             name : '',
             ingredient: '',
@@ -101,13 +103,29 @@ export default class CreateRecipe extends Component {
             quantities: this.state.quantities,
             notes: this.state.notes
         }
-
-        console.log(recipe);
-
         axios.post('http://localhost:5000/recipes/add/', recipe)
         .then(res => console.log(res.data));
 
-        window.location.reload();
+        axios.get('http://localhost:5000/recipes/')
+        .then(response => {
+            response.data.sort((a,b) =>
+                (a.name > b.name) ? 1: -1)
+            this.setState({ recipes: response.data })
+        })
+        .catch((error) =>{
+            console.log(error);
+        })
+
+        while(this.state.quantities.length > 0){
+            this.remIng()
+        }
+
+        this.setState({
+            name: '',
+            notes: ''
+        })
+
+        this.props.history.push('/recipe-suggestions/')  
     }
 
     handleChange = (e) => { 
@@ -180,7 +198,9 @@ export default class CreateRecipe extends Component {
                         </div>
                         <div className="col">
                         <Button onClick={this.addIng} variant="outline-primary">Add Ingredient</Button>{' '}
-                        <Button href = "/recipe-suggestions/ingredients/add/" variant="outline-secondary">Modify Ingredients List</Button>{' '}
+                        <Link to="/recipe-suggestions/ingredients/add/">
+                            <Button variant="outline-secondary">Modify Ingredients List</Button>
+                        </Link>{' '}
                         <Button onClick={this.remIng} variant="outline-danger">Remove Last Ingredient</Button>{' '}
                         </div>
                     </div>
@@ -222,7 +242,7 @@ export default class CreateRecipe extends Component {
             <div>
             <br />
             <h3>Saved Recipes</h3>
-                <table className="table">
+                <table className="table" ref={this.tableRef}>
                 <thead className="thead-light">
                     <tr>
                     <th>Recipe Name</th>

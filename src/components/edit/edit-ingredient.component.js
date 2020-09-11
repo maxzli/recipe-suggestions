@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Button} from 'react-bootstrap';
+import { Link} from 'react-router-dom';
+
 
 
 export default class EditIngredient extends Component {
@@ -65,7 +67,7 @@ export default class EditIngredient extends Component {
         axios.post('http://localhost:5000/ingredients/update/'+this.props.match.params.id, ingredient)
         .then(res => console.log(res.data));
 
-        window.location = '/ingredients/add/';
+        this.props.history.push('/recipe-suggestions/ingredients/add/')  
     }
 
 
@@ -96,7 +98,8 @@ export default class EditIngredient extends Component {
                 </div>
                 <div className="form-group">
                 <input type="submit" value="Edit Ingredient" className="btn btn-primary" />{' '}
-                <Button href = "/ingredients/add" variant="outline-danger">Go Back</Button>{' '}
+                <Link to="/recipe-suggestions/ingredients/add/">
+                <Button variant="outline-danger">Go Back</Button></Link>{' '}
                 </div>
             </form>
             </div>

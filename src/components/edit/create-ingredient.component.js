@@ -86,8 +86,19 @@ export default class CreateIngredient extends Component {
             expiration: 0,
         })
 
-        window.location.reload();
-    }
+        axios.get('http://localhost:5000/ingredients/')
+        .then(response => {
+            response.data.sort((a,b) =>
+                (a.name > b.name) ? 1: -1)
+            this.setState({ ingredients: response.data })
+        })
+        .catch((error) =>{
+            console.log(error);
+        })
+
+        this.props.history.push('/recipe-suggestions/foods/add/')  
+      }
+
 
 
     render() {
