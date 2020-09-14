@@ -54,6 +54,8 @@ export default class Suggestions extends Component {
         axios.get('/ingredients/')
             .then(response => {
                 if (response.data.length > 0){
+                    console.log(response.data)
+
                     var result = {};
                     var names = response.data.map(ingredient => ingredient.name);
                     var expirations = response.data.map(ingredient => ingredient.expiration);
