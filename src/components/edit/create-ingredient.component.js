@@ -31,7 +31,7 @@ export default class CreateIngredient extends Component {
     }
 
     componentDidMount(){ // code will run before page renders, add to state
-        axios.get('http://localhost:5000/ingredients/')
+        axios.get('/ingredients/')
             .then(response => {
                 response.data.sort((a,b) =>
                     (a.name > b.name) ? 1: -1)

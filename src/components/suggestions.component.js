@@ -51,7 +51,7 @@ export default class Suggestions extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5000/ingredients/')
+        axios.get('/ingredients/')
             .then(response => {
                 if (response.data.length > 0){
                     var result = {};
@@ -64,7 +64,7 @@ export default class Suggestions extends Component {
                 }
             })
 
-        axios.get('http://localhost:5000/foods/')
+        axios.get('/foods/')
             .then(response => {
                 if (response.data.length > 0){
                     var result = {};
