@@ -14,10 +14,10 @@ app.use(express.json());
 
 const proxy = require('http-proxy-middleware')
 
-module.exports = function(app) {
-    // add other server routes to path array
-    app.use(proxy(['/api' ], { target: 'http://localhost:53680' }));
-}
+// module.exports = function(app) {
+//     // add other server routes to path array
+//     app.use(proxy(['/api' ], { target: 'http://localhost:53680' }));
+// }
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
