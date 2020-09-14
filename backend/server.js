@@ -18,6 +18,14 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
+// just added
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('../build'));
+}
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
+
 const ingredientsRouter = require('./routes/ingredients');
 const recipesRouter = require('./routes/recipes');
 const foodsRouter = require('./routes/foods')
@@ -25,13 +33,6 @@ const foodsRouter = require('./routes/foods')
 app.use('/ingredients', ingredientsRouter);
 app.use('/recipes', recipesRouter);
 app.use('/foods', foodsRouter);
-
-let Ingredient = require('/models/ingredient.model');
-app.route('/').get((req, res) => {
-  Ingredient.find()
-      .then(ingredient => res.json(ingredient))
-      .catch(err => res.status(400).json('Error: ' + err));
-});
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
