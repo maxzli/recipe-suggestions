@@ -26,13 +26,14 @@
     "styled-components": "^5.2.0"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
-    },
+    "client-install": "npm install --prefix client",    
+    "start": "node index.js",    
+    "server": "nodemon index.js",    
+    "client": "npm start --prefix client",    
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild":      "NPM_CONFIG_PRODUCTION=false npm install --prefix client        && npm run build --prefix client"
+  },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },
