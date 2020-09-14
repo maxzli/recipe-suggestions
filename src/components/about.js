@@ -6,7 +6,8 @@ export default class About extends Component {
     return (
       <div>
         <h3>About</h3>
-        <p>A small MERN project.</p>
+        <p>A small project created by Max Li to practice creating and deploying a MERN app.</p>
+        <p>Recipe suggestions are offered to the user based on current Fridge food and saved Recipes.</p>
       </div>
     )
   }
