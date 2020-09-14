@@ -51,7 +51,7 @@ export default class Suggestions extends Component {
     }
 
     componentDidMount(){
-        axios.get('/ingredients/')
+        axios.get('/ingredients')
             .then(response => {
                 if (response.data.length > 0){
                     console.log(response.data)
