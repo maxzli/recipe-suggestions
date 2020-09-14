@@ -26,6 +26,7 @@ app.use('/ingredients', ingredientsRouter);
 app.use('/recipes', recipesRouter);
 app.use('/foods', foodsRouter);
 
+let Ingredient = require('/models/ingredient.model');
 app.route('/').get((req, res) => {
   Ingredient.find()
       .then(ingredient => res.json(ingredient))
