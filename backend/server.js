@@ -12,12 +12,12 @@ var path = require('path');
 app.use(cors());
 app.use(express.json());
 
-const proxy = require('http-proxy-middleware')
+app.use(express.static(path.join(__dirname, '../build')));
 
-// module.exports = function(app) {
-//     // add other server routes to path array
-//     app.use(proxy(['/api' ], { target: 'http://localhost:53680' }));
-// }
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
