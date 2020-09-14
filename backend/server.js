@@ -5,23 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
-const express = require('express');
-const path = require('path');
-
-//Static file declaration
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-//production mode
-if(process.env.NODE_ENV === 'production') 
-{  
-  app.use(express.static(path.join(__dirname, 'client/build')));  
-  app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = 'client/build/index.html'));  })
-}
-
-//build mode
-app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
-
+const port = process.env.PORT || 5000
 
 app.use(cors());
 app.use(express.json());
@@ -42,6 +26,6 @@ app.use('/ingredients', ingredientsRouter);
 app.use('/recipes', recipesRouter);
 app.use('/foods', foodsRouter);
 
-//start server
-app.listen(port, (req, res) => {  console.log( `server listening on port: ${port}`);})
-
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+});
