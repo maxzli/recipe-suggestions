@@ -11,10 +11,13 @@ var path = require('path');
 
 app.use(cors());
 app.use(express.json());
-app.use('/static', express.static(path.join(__dirname, '../build')));
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
+
+const proxy = require('http-proxy-middleware')
+
+module.exports = function(app) {
+    // add other server routes to path array
+    app.use(proxy(['/api' ], { target: 'http://localhost:5000' }));
+}
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
