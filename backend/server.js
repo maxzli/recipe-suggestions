@@ -16,7 +16,6 @@ app.use('/static', express.static(path.join(__dirname, '../build')));
 //   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 // });
 
-
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
