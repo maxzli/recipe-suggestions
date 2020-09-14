@@ -1,7 +1,7 @@
 {
   "name": "recipe-suggestions",
   "version": "0.1.0",
-  "homepage": "https://maxzli.github.io/recipe-suggestions/",
+  "homepage": "https://recipe-suggestions-mzl.herokuapp.com/",
   "private": true,
   "dependencies": {
     "-": "0.0.1",
@@ -33,8 +33,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
-    },
+    "heroku-postbuild": "npm --production=false && npm run build"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
