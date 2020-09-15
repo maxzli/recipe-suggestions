@@ -31,7 +31,7 @@ export default class CreateIngredient extends Component {
     }
 
     componentDidMount(){ // code will run before page renders, add to state
-        axios.get('/ingredients/')
+        axios.get('http://localhost:5000/api/foods/')
             .then(response => {
                 response.data.sort((a,b) =>
                     (a.name > b.name) ? 1: -1)
@@ -43,7 +43,7 @@ export default class CreateIngredient extends Component {
     }
 
     deleteIngredient(id) {
-        axios.delete('http://localhost:5000/ingredients/' + id)
+        axios.delete('http://localhost:5000/api/ingredients/' + id)
             .then(res => console.log(res.data));
         this.setState({
             ingredients: this.state.ingredients.filter(el => el._id !== id)

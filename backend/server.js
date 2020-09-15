@@ -38,7 +38,7 @@ app.use('/recipes', recipesRouter);
 app.use('/foods', foodsRouter);
 
 const router = require('express').Router();
-let Ingredient = require('/models/ingredient.model');
+let Ingredient = require('./models/ingredient.model');
 
 router.route('/').get((req, res) => {
     Ingredient.find()
