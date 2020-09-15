@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 
@@ -13,10 +12,8 @@ const port = process.env.PORT || 5000
 const buildPath = path.join(__dirname, '../build');
 console.log(buildPath)
 app.use(express.static(buildPath));
-app.use(cors());
 
 
-app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;

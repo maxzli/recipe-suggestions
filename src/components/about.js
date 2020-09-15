@@ -7,7 +7,8 @@ export default class About extends Component {
       <div>
         <h3>About</h3>
         <p>A small project created by Max Li to practice creating and deploying a MERN app.</p>
-        <p>Recipe suggestions are offered to the user based on current Fridge food and saved Recipes.</p>
+        <p>To simplify the cooking decision making process, meal ideas are offered to the user in order of earliest expiration date.</p>
+        <p>Suggestions are based on current food in the fridge and saved recipes.</p>
       </div>
     )
   }
