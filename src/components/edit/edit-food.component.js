@@ -93,7 +93,7 @@ export default class FoodOnHand extends Component {
         axios.post('/api/foods/update/'+this.props.match.params.id, food)
         .then(res => console.log(res.data));
 
-        this.props.history.push('/recipe-suggestions/')  
+        this.props.history.push('/')  
     }
 
 
@@ -141,7 +141,7 @@ export default class FoodOnHand extends Component {
                 </div>
                 <div className="form-group">
                 <input type="submit" value="Edit Food" className="btn btn-primary" />{' '}
-                <Link to="/recipe-suggestions/foods/add/">
+                <Link to="/foods/add/">
                 <Button variant="outline-danger">Go Back</Button></Link>{' '}
                 </div>
             </form>

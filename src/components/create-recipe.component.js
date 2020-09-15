@@ -125,7 +125,7 @@ export default class CreateRecipe extends Component {
             notes: ''
         })
 
-        this.props.history.push('/recipe-suggestions/')  
+        this.props.history.push('/')  
     }
 
     handleChange = (e) => { 
@@ -198,7 +198,7 @@ export default class CreateRecipe extends Component {
                         </div>
                         <div className="col">
                         <Button onClick={this.addIng} variant="outline-primary">Add Ingredient</Button>{' '}
-                        <Link to="/recipe-suggestions/ingredients/add/">
+                        <Link to="/ingredients/add/">
                             <Button variant="outline-secondary">Modify Ingredients List</Button>
                         </Link>{' '}
                         <Button onClick={this.remIng} variant="outline-danger">Remove Last Ingredient</Button>{' '}

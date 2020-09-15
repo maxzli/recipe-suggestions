@@ -14,7 +14,7 @@ const Row = props => (
         <td>{props.food.expirationdate.substring(0,10)}{(Date.parse(props.food.expirationdate)-Date.parse(new Date()) < 0) && 
         <span><font color={'red'}> EXPIRED!</font></span>}</td>
         <td>
-        <Link to={"/recipe-suggestions/foods/edit/"+props.food._id}>edit</Link> |  <a href="#top" onClick={() => { props.deleteFood(props.food._id) }}>delete</a>
+        <Link to={"/foods/edit/"+props.food._id}>edit</Link> |  <a href="#top" onClick={() => { props.deleteFood(props.food._id) }}>delete</a>
         </td>
     </tr>
 )
@@ -144,7 +144,7 @@ export default class FoodOnHand extends Component {
                 console.log(error);
             })
 
-            this.props.history.push('/recipe-suggestions/')  
+            this.props.history.push('/')  
         }
 
 
@@ -175,7 +175,7 @@ export default class FoodOnHand extends Component {
                         </select>    
                         </div>
                         <div className="col-sm">
-                            <Link to="/recipe-suggestions/ingredients/add/">
+                            <Link to="/ingredients/add/">
                                 <Button variant="outline-secondary">Modify Ingredients List</Button>
                             </Link>{' '}
                         </div>
