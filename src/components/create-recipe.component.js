@@ -40,7 +40,7 @@ export default class CreateRecipe extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5000/ingredients/')
+        axios.get('/api/ingredients/')
             .then(response => {
                 if (response.data.length > 0){
                     response.data.sort((a,b) =>
@@ -51,7 +51,7 @@ export default class CreateRecipe extends Component {
                     })
                 }
             })
-        axios.get('http://localhost:5000/recipes/')
+        axios.get('/api/recipes/')
             .then(response => {
                 response.data.sort((a,b) =>
                     (a.name > b.name) ? 1: -1)
@@ -63,7 +63,7 @@ export default class CreateRecipe extends Component {
     }
 
     deleteRecipe(id) {
-        axios.delete('http://localhost:5000/recipes/' + id)
+        axios.delete('/api/recipes/' + id)
             .then(res => console.log(res.data));
         this.setState({
             recipes: this.state.recipes.filter(el => el._id !== id)
@@ -103,10 +103,10 @@ export default class CreateRecipe extends Component {
             quantities: this.state.quantities,
             notes: this.state.notes
         }
-        axios.post('http://localhost:5000/recipes/add/', recipe)
+        axios.post('/api/recipes/add/', recipe)
         .then(res => console.log(res.data));
 
-        axios.get('http://localhost:5000/recipes/')
+        axios.get('/api/recipes/')
         .then(response => {
             response.data.sort((a,b) =>
                 (a.name > b.name) ? 1: -1)

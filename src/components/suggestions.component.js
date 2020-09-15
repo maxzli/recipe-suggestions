@@ -51,7 +51,7 @@ export default class Suggestions extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5000/ingredients/')
+        axios.get('/api/ingredients/')
             .then(response => {
                 if (response.data.length > 0){
                     console.log(response.data)
@@ -66,7 +66,7 @@ export default class Suggestions extends Component {
                 }
             })
 
-        axios.get('http://localhost:5000/foods/')
+        axios.get('/api/foods/')
             .then(response => {
                 if (response.data.length > 0){
                     var result = {};
@@ -80,7 +80,7 @@ export default class Suggestions extends Component {
                         currentfoods: response.data,
                         weights: result})
                     
-                    axios.get('http://localhost:5000/recipes/')
+                    axios.get('/api/recipes/')
                         .then(response => {
                             if (response.data.length > 0){
                             this.setState({ allrecipes: response.data })}
@@ -144,7 +144,7 @@ export default class Suggestions extends Component {
 
 
     deleteFood(id) {
-        axios.delete('http://localhost:5000/foods/' + id)
+        axios.delete('/api/foods/' + id)
             .then(res => console.log(res.data));
         this.setState({
             currentfoods: this.state.currentfoods.filter(el => el._id !== id)
@@ -179,7 +179,7 @@ export default class Suggestions extends Component {
 
     //     console.log(food);
 
-    //     axios.post('http://localhost:5000/foods/add/', food)
+    //     axios.post('/api/foods/add/', food)
     //     .then(res => console.log(res.data));
 
     //     this.setState({

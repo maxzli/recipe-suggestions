@@ -28,7 +28,7 @@ export default class FoodOnHand extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5000/ingredients/')
+        axios.get('/api/ingredients/')
         .then(response => {
             if (response.data.length > 0){
                 var result = {};
@@ -43,7 +43,7 @@ export default class FoodOnHand extends Component {
                 })
             }
         })
-        axios.get('http://localhost:5000/foods/'+this.props.match.params.id)
+        axios.get('/api/foods/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     name: response.data.name,
@@ -90,7 +90,7 @@ export default class FoodOnHand extends Component {
 
         console.log(food);
 
-        axios.post('http://localhost:5000/foods/update/'+this.props.match.params.id, food)
+        axios.post('/api/foods/update/'+this.props.match.params.id, food)
         .then(res => console.log(res.data));
 
         this.props.history.push('/recipe-suggestions/')  

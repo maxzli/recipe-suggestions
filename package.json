@@ -25,14 +25,11 @@
     "styled-components": "^5.2.0"
   },
   "scripts": {
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start-client": "react-scripts start",
+    "build": "react-scripts build && (cd backend && npm install)",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build",
-    "client": "npm start",
-    "server": "cd backend && node server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\""
+    "start": "cd backend && npm start"
   },
   "eslintConfig": {
     "extends": "react-app"

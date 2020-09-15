@@ -22,7 +22,7 @@ export default class EditIngredient extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5000/ingredients/'+this.props.match.params.id)
+        axios.get('/api/ingredients/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     name: response.data.name,
@@ -64,7 +64,7 @@ export default class EditIngredient extends Component {
 
         console.log(ingredient);
 
-        axios.post('http://localhost:5000/ingredients/update/'+this.props.match.params.id, ingredient)
+        axios.post('/api/ingredients/update/'+this.props.match.params.id, ingredient)
         .then(res => console.log(res.data));
 
         this.props.history.push('/recipe-suggestions/ingredients/add/')  
