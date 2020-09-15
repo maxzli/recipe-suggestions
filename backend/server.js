@@ -20,11 +20,14 @@ connection.once('open', () => {
 
 // just added
 if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('../build'));
+  // Exprees will serve up production assets
+  app.use(express.static('../build'));
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
 }
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
 
 const ingredientsRouter = require('./routes/ingredients');
 const recipesRouter = require('./routes/recipes');
